@@ -1,8 +1,8 @@
 import './App.css';
-import Header from "./src/components/Header";
-import ProfileContent from "src/components/ProfileContent";
-import SideBar from ".sidebar/components/SideBar";
-import Footer from ".footer/components/Footer";
+import Header from "./components/Header";
+import ProfileContent from "./components/ProfileContent";
+import SideBar from "./components/sidebar";
+import Footer from "./components/footer";
 
 function App() {
   return (
