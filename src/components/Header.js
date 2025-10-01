@@ -1,17 +1,60 @@
 import React from "react";
+import { useCart } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 function Header() {
+  const { getCartItemsCount } = useCart();
+  const cartCount = getCartItemsCount();
+
   return (
-    <header className="bg-blue-600 text-white p-4 flex items-center">
-      <img
-        src="https://scontent.fmnl13-4.fna.fbcdn.net/v/t39.30808-6/539829725_1720774951940666_8282206955123048886_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeGu0UQQxAZg1SVEmUo-SXLY9f2b-yEVekb1_Zv7IRV6Rgc1hAYgh44ejKYFznH5zsDuzbzuXz-V6Xy-M7_-Egc6&_nc_ohc=d0Bycj1BV9kQ7kNvwH6McRA&_nc_oc=AdmjhiAM1uMjI2DAIpR3EXlvQwv768uEDGzyr57OrpVPGg2kFFqYjROs3sIq90xkQksNdJsywJ-zOANJa2YFNsSn&_nc_zt=23&_nc_ht=scontent.fmnl13-4.fna&_nc_gid=eFsuUCVz5LgrJM37r9kewQ&oh=00_AfaXXsIT02aCWxlbs-1CWuBJbh1yf5-JXDX4QsrpjolTtQ&oe=68C9D006"
-        alt="Profile"
-        className="rounded-full mr-4 w-16 h-16"
-      />
-      <div>
-        <div>Prk 1 Tambacan Iligan City</div>
-        <div>Email: geniejamesarsenal.202300349@gmail.com</div>
+    <header className="text-white p-4 flex items-center justify-between" style={{ backgroundColor: '#e7000b' }}>
+      <div className="flex items-center">
+        <Link to="/" className="flex items-center">
+          <svg
+            className="w-12 h-12 mr-3"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+            />
+          </svg>
+          <div>
+            <h1 className="text-2xl font-bold">Bossgen</h1>
+            <p className="text-sm text-red-100">Your One-Stop Tech Store</p>
+          </div>
+        </Link>
       </div>
+      
+      <Link
+        to="/cart"
+        className="relative bg-white px-4 py-2 rounded-lg hover:bg-red-50 transition-colors duration-200 flex items-center gap-2"
+        style={{ color: '#e7000b' }}
+      >
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+          />
+        </svg>
+        <span className="font-semibold">Cart</span>
+        {cartCount > 0 && (
+          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center">
+            {cartCount}
+          </span>
+        )}
+      </Link>
     </header>
   );
 }
